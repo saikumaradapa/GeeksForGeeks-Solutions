@@ -1,0 +1,50 @@
+Problem Link : https://www.geeksforgeeks.org/problems/find-the-sum-of-last-n-nodes-of-the-linked-list/1
+
+class Solution:
+    def sumOfLastN_Nodes(self, head, n):
+        slow = head
+        fast = head
+
+        for _ in range(n):
+            fast = fast.next
+
+        while fast:
+            slow = slow.next
+            fast = fast.next
+
+        res = 0
+        while slow:
+            res += slow.data
+            slow = slow.next
+        
+        return res
+
+''' time complexity : O(n)       single iteration
+    space complexity : O(1)
+'''
+
+###########################################################################################################################################################################################################
+
+class Solution:
+    def sumOfLastN_Nodes(self, head, n):
+        list_size = 0
+        curr = head
+        while curr:
+            list_size += 1
+            curr = curr.next
+        
+        curr = head
+        steps_to_skip = list_size - n
+        for _ in range(steps_to_skip):
+            curr = curr.next
+        
+        total_sum = 0
+        while curr:
+            total_sum += curr.data
+            curr = curr.next
+        
+        return total_sum
+
+''' time complexity : O(n)       2 iterations
+    space complexity : O(1)
+'''

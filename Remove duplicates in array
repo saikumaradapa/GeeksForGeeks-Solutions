@@ -1,0 +1,9 @@
+Problem Link : https://www.geeksforgeeks.org/problems/remove-duplicates-in-small-prime-array/1
+
+class Solution:
+    def removeDuplicates(self, arr):
+        return list(dict.fromkeys(arr))
+
+''' time complexity : O(n)
+    space complexity : O(n)
+'''

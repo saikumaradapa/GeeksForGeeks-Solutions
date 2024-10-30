@@ -1,1 +1,75 @@
 Problem Link : https://www.geeksforgeeks.org/problems/quick-sort-on-linked-list/1
+
+
+class ListNode:
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next
+
+# Helper function to get the tail of the linked list
+def getTail(node):
+    while node and node.next:
+        node = node.next
+    return node
+
+# Partition function: it partitions around the pivot (tail node)
+def partition(head, end):
+    pivot = end
+    prev = None
+    curr = head
+    tail = pivot
+
+    newHead = None
+    newEnd = tail
+
+    # Iterating through the list and partitioning around the pivot
+    while curr != pivot:
+        if curr.data < pivot.data:
+            if newHead is None:
+                newHead = curr
+            prev = curr
+            curr = curr.next
+        else:
+            if prev:
+                prev.next = curr.next
+            temp = curr.next
+            curr.next = None
+            tail.next = curr
+            tail = curr
+            curr = temp
+
+    if newHead is None:
+        newHead = pivot
+
+    newEnd = tail
+
+    return newHead, pivot, newEnd
+
+# QuickSort recursive function
+def quickSortRecur(head, end):
+    if not head or head == end:
+        return head
+
+    # Partition the list and get the pivot
+    newHead, pivot, newEnd = partition(head, end)
+
+    if newHead != pivot:
+        temp = newHead
+        while temp.next != pivot:
+            temp = temp.next
+        temp.next = None
+
+        newHead = quickSortRecur(newHead, temp)
+
+        temp = getTail(newHead)
+        temp.next = pivot
+
+    pivot.next = quickSortRecur(pivot.next, newEnd)
+
+    return newHead
+
+# Main QuickSort function
+def quickSort(head):
+    end = getTail(head)
+    return quickSortRecur(head, end)
+

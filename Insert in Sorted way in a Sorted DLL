@@ -1,0 +1,39 @@
+Problem Link : https://www.geeksforgeeks.org/problems/insert-in-sorted-way-in-a-sorted-dll/1
+
+
+'''
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.prev = None
+        self.next = None
+'''
+
+class Solution:
+    #Function to insert a node in a sorted doubly linked list.
+    def sortedInsert(self, head, x):
+        dummy = curr = Node(float("-inf"))
+        curr.next = head
+        
+        while curr and curr.next and curr.next.data < x:
+            curr = curr.next
+        
+        nextNode = curr.next
+        prevNode = curr
+        currNode = Node(x)
+        
+        
+        prevNode.next = currNode
+        currNode.prev = prevNode
+        
+        currNode.next = nextNode
+        
+        if nextNode:
+            nextNode.prev = currNode
+        
+        return dummy.next
+        
+''' time complexity : O(n)
+    space complexity : O(1)
+'''
+       

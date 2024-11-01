@@ -1,0 +1,26 @@
+Problem Link : https://www.geeksforgeeks.org/problems/swap-and-maximize5859/1
+
+class Solution:
+    def maxSum(self,arr):
+        arr.sort()
+        suffled_arr = []
+        i, j = 0, len(arr)-1
+        while i <= j:
+            suffled_arr.append(arr[i])
+            i += 1
+            
+            if i <= j:
+                suffled_arr.append(arr[j])
+                j -= 1
+        
+        res = 0 
+        n = len(arr)
+        
+        
+        for i in range(n):
+            res += abs(suffled_arr[i] - suffled_arr[(i + 1) % n])
+        return res
+
+''' time complexity : O(n logn)
+    space complexity : O(n)
+'''

@@ -1,0 +1,19 @@
+Problem Link : https://www.geeksforgeeks.org/problems/kth-distance3757/1
+
+class Solution:
+    def checkDuplicatesWithinK(self, arr, k):
+        first_occurance = dict()
+        
+        for i in range(len(arr)):
+            if arr[i] not in first_occurance:
+                first_occurance[arr[i]] = i 
+                
+            elif i - first_occurance[arr[i]] <= k:
+                return True
+
+        return False
+                
+
+''' time complexity : O(n)
+    space complexity : O(n)
+'''

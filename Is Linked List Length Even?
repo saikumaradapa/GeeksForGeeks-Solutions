@@ -1,0 +1,17 @@
+Problem Link : https://www.geeksforgeeks.org/problems/linked-list-length-even-or-odd/1
+
+
+class Solution:
+    def isLengthEven(self, head):
+        list_lenght = 0 
+        
+        curr = head
+        while curr:
+            list_lenght += 1
+            curr = curr.next 
+        
+        return (list_lenght & 1) == 0
+        
+''' time complexity : O(n)
+    space complexity : O(1)
+'''

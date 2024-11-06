@@ -1,0 +1,30 @@
+Problem Link : https://www.geeksforgeeks.org/problems/root-to-leaf-paths-sum/1
+
+
+
+from collections import deque 
+class Solution:
+    def treePathSum(self,root):
+        q = deque([(0, root)])
+              
+        res = 0 
+        while q:
+            curr_val, node = q.popleft()
+            
+            flag = False 
+            
+            if node.left:
+                flag = True 
+                q.append((curr_val * 10 + node.data, node.left))
+            if node.right:
+                flag = True 
+                q.append((curr_val * 10 + node.data, node.right))
+                
+            
+            if not flag:
+                res += curr_val * 10 + node.data
+        return res
+            
+''' time complexity : O(n) 
+    space complexity : O(h)
+'''

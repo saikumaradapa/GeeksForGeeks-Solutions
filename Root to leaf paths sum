@@ -26,5 +26,5 @@ class Solution:
         return res
             
 ''' time complexity : O(n) 
-    space complexity : O(h)
+    space complexity : O(h)    h - height of the tree
 '''

@@ -13,3 +13,7 @@ def rotate(mat):
         mat[i].reverse()
     
     return mat
+
+''' time complexity : O(m * n)
+    space complexity : O(1)
+'''

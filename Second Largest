@@ -1,0 +1,16 @@
+Problem Link : https://www.geeksforgeeks.org/problems/second-largest3735/1
+
+class Solution:
+    def getSecondLargest(self, arr):
+        first_largest = float('-inf')
+        second_largest = float('-inf')
+        
+        
+        for n in arr:
+            if n > first_largest :
+                second_largest = first_largest
+                first_largest = n 
+            elif n > second_largest and n != first_largest:
+                second_largest = n 
+        
+        return second_largest if second_largest != float('-inf') else -1

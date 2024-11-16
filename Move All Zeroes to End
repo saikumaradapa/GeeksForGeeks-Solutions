@@ -1,0 +1,10 @@
+class Solution:
+	def pushZerosToEnd(self,arr):
+    	res = [0] * len(arr)
+    	
+    	idx = 0 
+    	for n in arr:
+    	    if n != 0:
+    	        res[idx] = n 
+    	        idx += 1
+    	arr[:] = res[:]

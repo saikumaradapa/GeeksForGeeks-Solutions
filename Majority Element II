@@ -1,0 +1,21 @@
+class Solution:
+    
+    def findMajority(self, arr):
+        freq = dict()
+        
+        n = len(arr)
+        hasSet = set()
+        res = []
+        
+        
+        for vote in arr:
+            if vote not in freq:
+                freq[vote] = 1 
+            else:
+                freq[vote] += 1 
+                
+            if vote not in hasSet and freq[vote] > n // 3:
+                res.append(vote) 
+                hasSet.add(vote)
+            
+        return sorted(res)

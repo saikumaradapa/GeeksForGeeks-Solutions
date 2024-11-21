@@ -1,3 +1,5 @@
+Problem Link : https://www.geeksforgeeks.org/problems/majority-vote/1
+
 class Solution:
     
     def findMajority(self, arr):

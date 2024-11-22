@@ -1,0 +1,11 @@
+
+
+class Solution:
+    def maximumProfit(self, prices):
+        minPrice = float('inf')
+        maxProfit = float('-inf')
+        
+        for n in prices:
+            minPrice = min(minPrice, n)
+            maxProfit = max(maxProfit, n - minPrice)
+        return maxProfit

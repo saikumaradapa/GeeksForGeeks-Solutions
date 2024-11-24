@@ -1,0 +1,10 @@
+class Solution:
+    def maxSubArraySum(self,arr):
+        res = float('-inf')
+        
+        max_sum = 0 
+        for n in arr:
+            max_sum = max(max_sum + n, n)
+            
+            res = max(res, max_sum)
+        return res

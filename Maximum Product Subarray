@@ -1,0 +1,26 @@
+
+
+class Solution:
+
+    def maxProduct(self, arr):
+        # Initialize variables
+        max_overall = arr[0]  # To store the global maximum product
+        max_ending_here = arr[0]  # Maximum product ending at the current position
+        min_ending_here = arr[0]  # Minimum product ending at the current position
+        
+        # Traverse the array from the second element
+        for i in range(1, len(arr)):
+            num = arr[i]
+            
+            if num < 0:
+                # Swap max and min when encountering a negative number
+                max_ending_here, min_ending_here = min_ending_here, max_ending_here
+            
+            # Update max and min ending here
+            max_ending_here = max(num, max_ending_here * num)
+            min_ending_here = min(num, min_ending_here * num)
+            
+            # Update the global maximum product
+            max_overall = max(max_overall, max_ending_here)
+        
+        return max_overall

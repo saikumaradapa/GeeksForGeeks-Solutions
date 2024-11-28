@@ -1,0 +1,38 @@
+Problem Link : https://www.geeksforgeeks.org/problems/largest-element-in-array4009/0?utm_source=youtube&utm_medium=collab_striver_ytdescription&utm_campaign=largest-element-in-array
+
+
+########################################################################################################################################################################################
+Brute Force : 
+
+from typing import List
+class Solution:
+    def largest(self, arr : List[int]) -> int:
+        if not arr: return -1
+        
+        arr.sort()
+        return arr[-1]
+        
+''' time complexity : O(n logn)
+    space complexity : O(1)
+'''
+
+########################################################################################################################################################################################
+Optimal Approach : 
+
+
+from typing import List
+class Solution:
+    def largest(self, arr : List[int]) -> int:
+        if not arr: return -1
+        
+        largest = arr[0]
+        for n in arr:
+            if n > largest:
+                largest = n
+        return largest
+
+''' time complexity : O(n)
+    space complexity : O(1)
+'''
+
+########################################################################################################################################################################################

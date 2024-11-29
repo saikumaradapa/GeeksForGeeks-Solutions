@@ -1,0 +1,17 @@
+problem Link : https://www.geeksforgeeks.org/problems/remove-duplicate-elements-from-sorted-array/1
+
+class Solution:
+    def removeDuplicates(self, arr):
+        l = 1
+        n = len(arr)
+        
+        
+        for r in range(1, n):
+            if arr[r-1] != arr[r]:
+                arr[l] = arr[r]
+                l += 1
+        return l 
+
+''' time complexity : O(n)
+    space complexity : O(1)
+'''

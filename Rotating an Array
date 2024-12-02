@@ -1,0 +1,25 @@
+Problem Link : https://www.geeksforgeeks.org/problems/reversal-algorithm5340/1
+
+
+class Solution:
+    def rotate(self, arr, left, right):
+        while left <= right:
+            arr[left], arr[right] = arr[right], arr[left]
+            left += 1
+            right -= 1
+    
+    
+    def leftRotate(self, arr, d):
+        n = len(arr)
+        d = d % n 
+        
+        self.rotate(arr, 0, d-1)
+        self.rotate(arr, d, n-1)
+        self.rotate(arr, 0, n-1)
+        
+        return arr
+        
+        
+''' time complexity : O(n)
+    space complexity : O(1)
+'''

@@ -1,5 +1,16 @@
 class Solution:
 	def pushZerosToEnd(self,arr):
+    	l = 0 
+    	n = len(arr)
+    	for r in range(n):
+    	    if arr[r] != 0:
+    	        arr[l], arr[r] = arr[r], arr[l]
+    	        l += 1
+    	return arr
+
+
+class Solution:
+	def pushZerosToEnd(self,arr):
     	res = [0] * len(arr)
     	
     	idx = 0 

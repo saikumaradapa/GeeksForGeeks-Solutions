@@ -1,0 +1,8 @@
+class Solution:
+    def countFreq(self, arr, target):
+        count = 0 
+        
+        for n in arr:
+            if target == n:
+                count += 1
+        return count

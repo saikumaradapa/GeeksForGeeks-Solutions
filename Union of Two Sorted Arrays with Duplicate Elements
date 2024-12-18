@@ -1,8 +1,7 @@
 Problem Link : https://www.geeksforgeeks.org/problems/union-of-two-sorted-arrays-1587115621/1
 
 
-class Solution:
-    
+class Solution:    
     def findUnion(self,a,b):
         unionArr = []
         

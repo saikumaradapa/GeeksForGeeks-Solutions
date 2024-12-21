@@ -1,5 +1,5 @@
 class Solution:
-    # Function to return a list of integers denoting spiral traversal of matrix.
+    
     def spirallyTraverse(self, mat):
         n, m = len(mat), len(mat[0])
         # Initialize the boundaries of the matrix

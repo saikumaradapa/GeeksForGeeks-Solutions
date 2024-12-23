@@ -1,0 +1,19 @@
+
+
+class Solution:
+    
+    #Function to search a given number in row-column sorted matrix.
+    def searchRowMatrix(self, mat, x): 
+        n, m = len(mat), len(mat[0])
+        for row in mat:
+            # Binary search within the row
+            low, high = 0, m - 1
+            while low <= high:
+                mid = (low + high) // 2
+                if row[mid] == x:
+                    return True  # Element found
+                elif row[mid] > x:
+                    high = mid - 1
+                else:
+                    low = mid + 1
+        return False  # Element not found

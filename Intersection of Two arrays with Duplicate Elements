@@ -1,0 +1,25 @@
+Problem Link : https://www.geeksforgeeks.org/problems/intersection-of-two-arrays-with-duplicate-elements/1
+
+class Solution:
+    def intersectionWithDuplicates(self, a, b):
+        a.sort()
+        b.sort()
+        
+        res = []
+        
+        i, j, n, m = 0, 0, len(a), len(b)
+        while i < n and j < m:
+            if a[i] == b[j]:
+                if not res or res[-1] != a[i]:
+                    res.append(a[i])
+                i, j = i+1, j+1
+            elif a[i] < b[j]:
+                i += 1
+            else:
+                j += 1
+        
+        return res
+
+''' time complexity : O(n logn + m logm)                
+    space complexity : O(1)
+'''

@@ -1,6 +1,5 @@
 Problem Link : https://www.geeksforgeeks.org/problems/subarrays-with-sum-k/1
 
-
 class Solution:
     def countSubarrays(self, arr, k):
         number_of_subarrays = 0 

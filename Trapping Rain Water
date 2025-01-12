@@ -1,0 +1,24 @@
+
+
+class Solution:
+    def maxWater(self, height):
+        n = len(height)
+        res = 0
+        l, r = 0, n-1
+        leftMax, rightMax = height[l], height[r]
+
+        while l<r:
+            if leftMax <= rightMax:
+                l += 1
+                leftMax = max(leftMax, height[l])
+                res += leftMax - height[l]
+            else:
+                r -= 1
+                rightMax = max(rightMax, height[r])
+                res += rightMax - height[r]
+        return res
+
+''' time complexity : O(n)        
+    space complexity : O(1)
+'''
+

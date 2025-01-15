@@ -1,0 +1,26 @@
+
+
+class Solution:
+    def longestSubarray(self, arr, k):
+        # Initialize variables
+        prefix_sum = 0
+        prefix_map = {}
+        max_length = 0
+        
+        # Traverse the array
+        for i in range(len(arr)):
+            prefix_sum += arr[i]
+            
+            # If the prefix_sum equals k, the subarray starts from index 0
+            if prefix_sum == k:
+                max_length = i + 1
+            
+            # If prefix_sum - k exists in the map, update max_length
+            if (prefix_sum - k) in prefix_map:
+                max_length = max(max_length, i - prefix_map[prefix_sum - k])
+            
+            # Store the first occurrence of the prefix_sum
+            if prefix_sum not in prefix_map:
+                prefix_map[prefix_sum] = i
+        
+        return max_length

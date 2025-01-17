@@ -1,0 +1,21 @@
+
+
+class Solution:
+    def productExceptSelf(self, arr):
+        n = len(arr)
+        # Initialize the result array
+        res = [1] * n
+        
+        # Calculate prefix product for each element
+        prefix = 1
+        for i in range(n):
+            res[i] = prefix
+            prefix *= arr[i]
+        
+        # Calculate suffix product and multiply with the result
+        suffix = 1
+        for i in range(n - 1, -1, -1):
+            res[i] *= suffix
+            suffix *= arr[i]
+        
+        return res

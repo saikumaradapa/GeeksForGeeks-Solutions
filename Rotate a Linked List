@@ -1,0 +1,39 @@
+
+
+class Solution:
+    # Function to rotate a linked list.
+    def rotate(self, head, k):
+        if not head or not head.next or k == 0:  # Handle edge cases
+            return head
+
+        # Step 1: Calculate the length of the linked list
+        length = 0
+        current = head
+        while current:
+            length += 1
+            current = current.next
+
+        # Step 2: Optimize the number of rotations
+        k = k % length
+        if k == 0:  # No rotation needed
+            return head
+
+        # Step 3: Traverse to the (k-1)th node to break the list
+        current = head
+        for _ in range(k - 1):
+            current = current.next
+
+        # The node after the (k-1)th node becomes the new head
+        new_head = current.next
+        current.next = None  # Break the list
+
+        # Step 4: Traverse to the end of the new list
+        current = new_head
+        while current and current.next:
+            current = current.next
+
+        # Step 5: Link the end of the new list to the old head
+        if current:
+            current.next = head
+
+        return new_head

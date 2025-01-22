@@ -1,5 +1,3 @@
-
-
 class Solution:
     def reverseKGroup(self, head, k):
         def reverse(head):

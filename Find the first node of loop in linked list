@@ -1,0 +1,21 @@
+
+
+class Solution:
+    def findFirstNode(self, head):
+        #code here
+        def loop(head):
+            slow,fast=head,head
+            while fast and fast.next:
+                slow=slow.next
+                fast=fast.next.next
+                if slow==fast:
+                    return slow
+            return None
+        slow=loop(head)
+        if not slow:
+            return None
+        temp=head
+        while temp!=slow:
+            temp=temp.next
+            slow=slow.next
+        return temp

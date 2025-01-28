@@ -1,0 +1,32 @@
+
+
+
+class Solution:
+    def findPermutation(self, s):
+        # Helper function for backtracking
+        def backtrack(path, used):
+            # If the current path length equals the input string, we've found a permutation
+            if len(path) == len(s):
+                result.add("".join(path))
+                return
+            
+            for i in range(len(s)):
+                # Skip used characters
+                if used[i]:
+                    continue
+                # Skip duplicates (i > 0 ensures we don't go out of bounds)
+                if i > 0 and s[i] == s[i - 1] and not used[i - 1]:
+                    continue
+                
+                # Mark the character as used and recurse
+                used[i] = True
+                backtrack(path + [s[i]], used)
+                # Backtrack and unmark the character
+                used[i] = False
+        
+        # Sort the string to handle duplicates easily
+        s = sorted(s)
+        result = set()  # Use a set to store unique permutations
+        used = [False] * len(s)  # Track used characters
+        backtrack([], used)
+        return sorted(result)  # Return the result sorted (optional)

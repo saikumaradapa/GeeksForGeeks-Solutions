@@ -1,0 +1,52 @@
+
+
+
+class Solution:
+    
+    # Function to solve the Sudoku
+    def solveSudoku(self, mat):
+        self.solve(mat)
+
+    def solve(self, board):
+        empty_cell = self.find_empty(board)
+        if not empty_cell:
+            return True  # Sudoku is solved
+        
+        row, col = empty_cell
+
+        for num in range(1, 10):  # Try numbers 1 to 9
+            if self.is_valid(board, row, col, num):
+                board[row][col] = num  # Place the number
+                
+                if self.solve(board):  # Recursively try solving the rest
+                    return True
+                
+                board[row][col] = 0  # Undo placement if not solvable
+        
+        return False  # Backtrack if no number is valid
+
+    def find_empty(self, board):
+        # Find an empty cell (marked as 0)
+        for i in range(9):
+            for j in range(9):
+                if board[i][j] == 0:
+                    return (i, j)
+        return None
+
+    def is_valid(self, board, row, col, num):
+        # Check row
+        if num in board[row]:
+            return False
+        
+        # Check column
+        if any(board[i][col] == num for i in range(9)):
+            return False
+        
+        # Check 3x3 sub-box
+        box_x, box_y = (row // 3) * 3, (col // 3) * 3
+        for i in range(3):
+            for j in range(3):
+                if board[box_x + i][box_y + j] == num:
+                    return False
+        
+        return True

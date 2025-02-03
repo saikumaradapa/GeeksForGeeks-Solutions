@@ -1,0 +1,13 @@
+
+
+class Solution:
+    #Function to find the height of a binary tree.
+    def height(self, root):
+        
+        if not root or root and (not root.left and not root.right):
+            return 0
+        
+        left = self.height(root.left)
+        right = self.height(root.right)
+        
+        return 1 + max(left, right)

@@ -1,0 +1,21 @@
+
+
+class Solution:
+    def __init__(self) :
+        self.res = 0
+        
+    def diameter(self, root):
+        def helper(root) :
+            if not root :
+                return -1
+            left_h = helper(root.left)
+            right_h = helper(root.right)
+            self.res = max(self.res, left_h + right_h+2)
+            return 1+max(left_h, right_h)
+        helper(root)
+        return self.res
+
+''' time complexity : O(n)    bottom-up approach
+    space complexity : O(h)
+'''        
+        

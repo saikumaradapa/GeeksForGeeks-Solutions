@@ -1,0 +1,13 @@
+
+
+class Solution:
+    def inOrder(self,root):
+        inorder_list = []
+        def helper(root, inorder_list):
+            if root:
+                helper(root.left, inorder_list)
+                inorder_list.append(root.data)
+                helper(root.right, inorder_list)
+        
+        helper(root, inorder_list)
+        return inorder_list

@@ -1,0 +1,24 @@
+
+
+
+class Solution:
+    def findMaxSum(self, root): 
+        # Initialize result with minimum possible value
+        self.res = float('-inf')
+
+        def maxPathSumUtil(node):
+            if node is None:
+                return 0
+
+            # Compute max sum from left and right subtrees
+            left = max(0, maxPathSumUtil(node.left))  # Ignore negative sums
+            right = max(0, maxPathSumUtil(node.right)) 
+
+            # Max path through current node (including both children)
+            self.res = max(self.res, left + right + node.data)
+
+            # Return max path sum using only one subtree
+            return max(left, right) + node.data
+
+        maxPathSumUtil(root)
+        return self.res

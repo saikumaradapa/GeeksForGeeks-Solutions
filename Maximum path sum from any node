@@ -1,6 +1,3 @@
-
-
-
 class Solution:
     def findMaxSum(self, root): 
         # Initialize result with minimum possible value

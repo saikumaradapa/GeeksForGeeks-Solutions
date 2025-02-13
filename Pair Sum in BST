@@ -1,0 +1,16 @@
+
+
+
+class Solution:
+    def findTarget(self, root, target): 
+        seen = set()
+
+        def dfs(node):
+            if not node:
+                return False
+            if (target - node.data) in seen:
+                return True
+            seen.add(node.data)
+            return dfs(node.left) or dfs(node.right)
+
+        return dfs(root)

@@ -1,0 +1,22 @@
+class Solution:
+    def LCA(self, root, n1, n2):
+        # Ensure n1 and n2 are integers (in case they are nodes)
+        if isinstance(n1, Node):
+            n1 = n1.data
+        if isinstance(n2, Node):
+            n2 = n2.data
+        
+        # Base case: If root is None, return None
+        if root is None:
+            return None
+        
+        # If both n1 and n2 are smaller, move to left subtree
+        if root.data > n1 and root.data > n2:
+            return self.LCA(root.left, n1, n2)
+        
+        # If both n1 and n2 are greater, move to right subtree
+        elif root.data < n1 and root.data < n2:
+            return self.LCA(root.right, n1, n2)
+        
+        # Otherwise, the root is the LCA
+        return root

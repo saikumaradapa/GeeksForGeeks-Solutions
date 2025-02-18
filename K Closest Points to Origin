@@ -1,0 +1,14 @@
+import heapq
+class Solution:
+    def kClosest(self, points: List[List[int]], k: int) -> List[List[int]]:
+        # Max-heap of size k (store negative distance for max behavior)
+        max_heap = []
+        
+        for x, y in points:
+            distance = -(x**2 + y**2)  # Negative to simulate max-heap
+            if len(max_heap) < k:
+                heapq.heappush(max_heap, (distance, [x, y]))
+            else:
+                heapq.heappushpop(max_heap, (distance, [x, y]))  # Replace farthest
+            
+        return [point for _, point in max_heap]

@@ -1,0 +1,33 @@
+class Solution:
+    def mergeKLists(self, lists):
+        if not lists: return None 
+
+        while len(lists) > 1:
+            mergedList = []
+
+            for i in range(0, len(lists), 2):
+                a = lists[i]
+                b = lists[i+1] if i < len(lists) -1 else None 
+                mergedList.append(self.mergeTwo(a, b))
+            
+            lists = mergedList
+        return lists[0]
+
+
+    def mergeTwo(self, a, b):
+        curr = dummy = Node(-1)
+
+        while a and b:
+            if a.data <= b.data:
+                curr.next = a 
+                a = a.next 
+            else:
+                curr.next = b 
+                b = b.next 
+            curr = curr.next 
+        
+        if a :
+            curr.next = a 
+        if b :
+            curr.next = b 
+        return dummy.next 

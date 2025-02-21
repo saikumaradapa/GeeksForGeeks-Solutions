@@ -1,0 +1,25 @@
+
+
+class Solution:
+    def isBalanced(self, s):
+        closed_set = {')', '}', ']'}
+        closed_dict = {
+            ')' : '(',
+            '}' : '{', 
+            ']' : '['
+        }
+        
+        stack = []
+        for ch in s:
+            if ch not in closed_set:
+                stack.append(ch)
+            elif not stack or stack[-1] != closed_dict[ch]:
+                return False 
+            else:
+                stack.pop()
+        return len(stack) == 0
+        
+        
+''' time complexity : O(n)
+    space complexity : O(n)
+'''

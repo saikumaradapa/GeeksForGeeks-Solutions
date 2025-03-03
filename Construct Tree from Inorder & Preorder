@@ -1,3 +1,5 @@
+
+
 class Solution:
     def buildTree(self, inorder, preorder):
         if not inorder or not preorder:

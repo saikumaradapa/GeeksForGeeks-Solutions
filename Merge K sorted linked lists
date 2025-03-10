@@ -1,6 +1,3 @@
-
-
-
 class Solution:
     def mergeKLists(self, lists):
         if not lists: return None 

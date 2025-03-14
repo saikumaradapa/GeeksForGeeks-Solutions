@@ -1,6 +1,3 @@
-
-
-
 class Solution:
     def LCA(self, root, n1, n2):
         # Ensure n1 and n2 are integers (in case they are nodes)

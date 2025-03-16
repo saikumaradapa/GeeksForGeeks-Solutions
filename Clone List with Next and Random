@@ -1,6 +1,3 @@
-
-
-
 class Solution:
     def cloneLinkedList(self, head):
         if not head : return None 

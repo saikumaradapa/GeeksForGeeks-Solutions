@@ -11,6 +11,9 @@ class Solution:
             curr = curr.next
         return count
 
+
+
+
 ''' time complexity : O(n)
     space complexity : O(1)
 '''

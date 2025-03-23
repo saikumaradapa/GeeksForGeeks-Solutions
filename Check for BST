@@ -1,3 +1,6 @@
+
+
+
 class Solution:
     
     def isBST(self, root, low=float("-inf"), high=float("inf")):
@@ -6,3 +9,6 @@ class Solution:
         if low < root.data < high :
             return (self.isBST(root.left, low, root.data) and self.isBST(root.right, root.data, high))
         return False 
+
+
+

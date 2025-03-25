@@ -3,7 +3,6 @@
 
 
 class Solution:
-    
     def isBST(self, root, low=float("-inf"), high=float("inf")):
         if not root : return True 
         

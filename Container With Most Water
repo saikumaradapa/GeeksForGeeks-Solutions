@@ -1,5 +1,4 @@
 class Solution:
-
     def maxWater(self, height):
         left, right = 0, len(height)-1
         res = 0

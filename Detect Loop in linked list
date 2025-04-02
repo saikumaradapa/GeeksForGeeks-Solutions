@@ -1,5 +1,3 @@
-
-
 class Solution:
     #Function to check if the linked list has a loop.
     def detectLoop(self, head):

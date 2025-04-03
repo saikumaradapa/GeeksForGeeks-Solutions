@@ -1,0 +1,43 @@
+from collections import deque
+class Solution:
+
+    #Function to find minimum time required to rot all oranges. 
+    def orangesRotting(self, grid):
+        q = deque([])
+        n, m = len(grid), len(grid[0])
+        visited = [[0] * m for _ in range(n)]
+        
+        ones_count = 0 
+        for i in range(n):
+            for j in range(m):
+                if grid[i][j] == 2:
+                    q.append((i, j))
+                elif grid[i][j] == 1:
+                    ones_count += 1
+        
+        
+        dx = (0, -1, 0, 1, 0)
+        res = 0
+        while q:
+            flag = False 
+            l = len(q)
+            for i in range(l):
+                row, col = q.popleft()
+                visited[row][col] = 1
+                
+                for j in range(4):
+                    newRow, newCol = row + dx[j], col + dx[j+1]
+                    
+                    if 0<= newRow<n and 0<=newCol<m and grid[newRow][newCol] == 1 and visited[newRow][newCol] == 0:
+                        grid[newRow][newCol] = 2
+                        q.append((newRow, newCol))
+                        ones_count -= 1
+                        flag = True 
+            
+            if flag:
+                res += 1
+                
+        if ones_count != 0: 
+            return -1 
+        
+        return res

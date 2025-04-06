@@ -1,0 +1,30 @@
+from collections import defaultdict, deque
+
+class Solution:
+    
+    def topoSort(self, V, edges):
+        # Step 1: Build adjacency list and in-degree array
+        graph = defaultdict(list)
+        in_degree = [0] * V
+        
+        for u, v in edges:
+            graph[u].append(v)
+            in_degree[v] += 1
+        
+        # Step 2: Initialize queue with nodes having in-degree 0
+        queue = deque([node for node in range(V) if in_degree[node] == 0])
+        
+        topo_order = []
+        
+        # Step 3: Process nodes
+        while queue:
+            node = queue.popleft()
+            topo_order.append(node)
+            
+            for neighbor in graph[node]:
+                in_degree[neighbor] -= 1
+                if in_degree[neighbor] == 0:
+                    queue.append(neighbor)
+        
+        # Step 4: Return result
+        return topo_order if len(topo_order) == V else []

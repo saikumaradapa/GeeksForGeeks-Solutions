@@ -1,9 +1,6 @@
 Problem Link : https://www.geeksforgeeks.org/problems/linked-list-length-even-or-odd/1
 
 
-
-
-
 class Solution:
     def isLengthEven(self, head):
         list_lenght = 0 

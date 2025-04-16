@@ -1,5 +1,8 @@
 Problem Link : https://www.geeksforgeeks.org/problems/equilibrium-point-1587115620/1
 
+
+
+
 class Solution:
     #Function to find equilibrium point in the array.
     def equilibriumPoint(self,arr):

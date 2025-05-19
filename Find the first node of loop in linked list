@@ -1,5 +1,3 @@
-
-
 class Solution:
     def findFirstNode(self, head):
         #code here

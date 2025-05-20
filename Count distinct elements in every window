@@ -1,6 +1,3 @@
-
-
-
 class Solution:
     def countDistinct(self, arr, k):
         from collections import defaultdict

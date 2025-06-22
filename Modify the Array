@@ -1,7 +1,6 @@
 Problem Link : https://www.geeksforgeeks.org/problems/ease-the-array0633/1
 
 
-
 class Solution:
     def modifyAndRearrangeArr(self, arr):
         n = len(arr)

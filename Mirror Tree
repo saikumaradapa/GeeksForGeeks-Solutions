@@ -1,5 +1,3 @@
-
-
 class Solution:
     #Function to convert a binary tree into its mirror tree.
     def mirror(self, root):

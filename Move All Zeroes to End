@@ -9,6 +9,9 @@ class Solution:
     	return arr
 
 
+
+
+
 class Solution:
 	def pushZerosToEnd(self,arr):
     	res = [0] * len(arr)

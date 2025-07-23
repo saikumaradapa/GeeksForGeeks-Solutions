@@ -1,6 +1,3 @@
-
-
-
 class Solution:
     def findPermutation(self, s):
         # Helper function for backtracking

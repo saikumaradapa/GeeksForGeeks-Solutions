@@ -1,5 +1,3 @@
-
-
 class Solution:    
     def searchInSorted(self,arr, k):
         l, r = 0, len(arr)-1

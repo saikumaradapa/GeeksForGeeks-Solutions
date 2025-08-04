@@ -1,6 +1,7 @@
 Problem Link : https://www.geeksforgeeks.org/problems/triplet-family/1
 
 
+
 class Solution:
     def findTriplet(self, arr):
         arr.sort()

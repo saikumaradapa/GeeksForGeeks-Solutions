@@ -1,5 +1,6 @@
 problem Link : https://www.geeksforgeeks.org/problems/remove-duplicate-elements-from-sorted-array/1
 
+
 class Solution:
     def removeDuplicates(self, arr):
         l = 1

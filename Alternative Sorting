@@ -1,7 +1,5 @@
 Problem Link : https://www.geeksforgeeks.org/problems/alternative-sorting1311/1
 
-
-
 class Solution:
     def alternateSort(self,arr):
         arr.sort()

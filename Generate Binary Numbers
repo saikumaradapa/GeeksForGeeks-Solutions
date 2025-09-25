@@ -1,0 +1,16 @@
+from collections import deque
+
+class Solution:
+    def generateBinary(self, n):
+        res = []
+        q = deque()
+        q.append("1")
+        
+        for _ in range(n):
+            curr = q.popleft()
+            res.append(curr)
+            # Generate next two binary numbers
+            q.append(curr + "0")
+            q.append(curr + "1")
+        
+        return res

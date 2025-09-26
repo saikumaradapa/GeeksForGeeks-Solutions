@@ -1,0 +1,25 @@
+from collections import deque
+
+class Solution:    
+    def rotateDeque(self, dq, type, k):
+        """
+        dq   : collections.deque or list of integers
+        type : 1 => right rotation, 2 => left rotation
+        k    : number of rotations
+        Returns the deque after rotation as a list.
+        """
+        # Ensure dq is a deque object
+        if not isinstance(dq, deque):
+            dq = deque(dq)
+        
+        # Normalize k to avoid unnecessary full rotations
+        k %= len(dq)
+
+        if type == 1:
+            # Right rotation
+            dq.rotate(k)
+        else:  # type == 2
+            # Left rotation (rotate by negative k)
+            dq.rotate(-k)
+        
+        return list(dq)

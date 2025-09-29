@@ -1,0 +1,36 @@
+from collections import deque
+
+class Solution:
+    def maxSubarrSum(self, arr, a, b):
+        n = len(arr)
+        
+        # Step 1: Compute prefix sums
+        prefix = [0] * (n + 1)
+        for i in range(n):
+            prefix[i+1] = prefix[i] + arr[i]
+        
+        max_sum = float('-inf')
+        
+        # Deque to store candidate prefix sums indices for minimum prefix in window
+        dq = deque()
+        
+        for i in range(a, n + 1):
+            # Add new candidate index for min prefix sum window start
+            # We keep indices from [i-b, i-a] in the deque
+            
+            # Remove indices out of the current window (less than i-b)
+            while dq and dq[0] < i - b:
+                dq.popleft()
+            
+            # Add the index (i - a) because subarray length >= a
+            start_index = i - a
+            # Maintain deque for minimum prefix sums
+            while dq and prefix[dq[-1]] >= prefix[start_index]:
+                dq.pop()
+            dq.append(start_index)
+            
+            # Now the front of dq is index of minimum prefix sum in the range
+            current_sum = prefix[i] - prefix[dq[0]]
+            max_sum = max(max_sum, current_sum)
+        
+        return max_sum

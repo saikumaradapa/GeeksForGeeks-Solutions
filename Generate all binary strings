@@ -1,0 +1,22 @@
+class Solution:
+    def binstr(self, n):
+        result = []
+        
+        def backtrack(current):
+            # If the current string is of length n, add to results
+            if len(current) == n:
+                result.append("".join(current))
+                return
+            
+            # Try '0' first to maintain ascending order
+            current.append('0')
+            backtrack(current)
+            current.pop()
+            
+            # Then try '1'
+            current.append('1')
+            backtrack(current)
+            current.pop()
+        
+        backtrack([])
+        return result

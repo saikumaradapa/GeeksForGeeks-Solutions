@@ -1,0 +1,14 @@
+class Solution:
+    def uniquePerms(self, arr):
+        def backtrack(start):
+            if start == len(arr):
+                result.add(tuple(arr))
+                return
+            for i in range(start, len(arr)):
+                arr[start], arr[i] = arr[i], arr[start]
+                backtrack(start + 1)
+                arr[start], arr[i] = arr[i], arr[start]
+
+        result = set()
+        backtrack(0)
+        return sorted(result)

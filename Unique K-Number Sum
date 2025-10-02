@@ -1,0 +1,17 @@
+class Solution:
+    def combinationSum(self, n, k):
+        def backtrack(start, current, remaining):
+            if len(current) == k and remaining == 0:
+                result.append(list(current))
+                return
+            if len(current) > k or remaining < 0:
+                return
+            
+            for i in range(start, 10):  # Numbers from 1 to 9
+                current.append(i)
+                backtrack(i + 1, current, remaining - i)
+                current.pop()
+        
+        result = []
+        backtrack(1, [], n)
+        return result

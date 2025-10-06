@@ -1,0 +1,29 @@
+class Solution:
+    def knightTour(self, n):
+        def is_safe(x, y, board):
+            return 0 <= x < n and 0 <= y < n and board[x][y] == -1
+
+        def backtrack(x, y, move_i, board, moves_x, moves_y):
+            if move_i == n * n:
+                return True
+
+            for i in range(8):
+                next_x, next_y = x + moves_x[i], y + moves_y[i]
+                if is_safe(next_x, next_y, board):
+                    board[next_x][next_y] = move_i
+                    if backtrack(next_x, next_y, move_i + 1, board, moves_x, moves_y):
+                        return True
+                    board[next_x][next_y] = -1  # Backtrack
+
+            return False
+
+        board = [[-1 for _ in range(n)] for _ in range(n)]
+        moves_x = [2, 1, -1, -2, -2, -1, 1, 2]
+        moves_y = [1, 2, 2, 1, -1, -2, -2, -1]
+
+        board[0][0] = 0  # Starting position
+
+        if backtrack(0, 0, 1, board, moves_x, moves_y):
+            return board
+        else:
+            return []

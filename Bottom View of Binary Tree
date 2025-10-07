@@ -1,0 +1,25 @@
+from collections import deque
+
+class Solution:
+    def bottomView(self, root):
+        if not root:
+            return []
+
+        # Map to store the bottom-most node's value at each horizontal distance
+        hd_node_map = {}
+        # Queue for level order traversal (stores node and its horizontal distance)
+        queue = deque([(root, 0)])
+
+        while queue:
+            node, hd = queue.popleft()
+            hd_node_map[hd] = node.data  # Update the node at this horizontal distance
+
+            # Add left child to queue with horizontal distance hd-1
+            if node.left:
+                queue.append((node.left, hd - 1))
+            # Add right child to queue with horizontal distance hd+1
+            if node.right:
+                queue.append((node.right, hd + 1))
+
+        # Sort the dictionary by horizontal distance and extract the node values
+        return [hd_node_map[key] for key in sorted(hd_node_map.keys())]

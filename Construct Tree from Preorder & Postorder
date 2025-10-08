@@ -1,0 +1,42 @@
+class Node:
+    def __init__(self, val):
+        self.data = val
+        self.right = None
+        self.left = None
+
+class Solution:
+    def constructTree(self, pre, post):
+        # Helper function to construct the tree
+        def construct(pre, post, pre_start, pre_end, post_start, post_end, post_map):
+            if pre_start > pre_end:
+                return None
+            
+            # Root of the current subtree
+            root = Node(pre[pre_start])
+
+            # If there's only one element, it's a leaf node
+            if pre_start == pre_end:
+                return root
+            
+            # Find the left subtree root in postorder array
+            left_root_val = pre[pre_start + 1]
+            left_root_index = post_map[left_root_val]
+
+            # Calculate the size of the left subtree
+            left_size = left_root_index - post_start + 1
+
+            # Recursively construct the left and right subtrees
+            root.left = construct(pre, post, pre_start + 1, pre_start + left_size, post_start, left_root_index, post_map)
+            root.right = construct(pre, post, pre_start + left_size + 1, pre_end, left_root_index + 1, post_end - 1, post_map)
+
+            return root
+        
+        # Base case
+        if not pre or not post:
+            return None
+
+        # Create a map of postorder values to their indices for quick lookup
+        post_map = {value: idx for idx, value in enumerate(post)}
+        
+        # Build the tree using the helper function
+        return construct(pre, post, 0, len(pre) - 1, 0, len(post) - 1, post_map)

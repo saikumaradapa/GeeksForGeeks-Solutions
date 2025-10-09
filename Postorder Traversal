@@ -1,0 +1,17 @@
+class Solution:
+    def postOrder(self, root):
+        # Helper function for recursive traversal
+        def postorder_traverse(node, result):
+            if not node:
+                return
+            # Traverse the left subtree
+            postorder_traverse(node.left, result)
+            # Traverse the right subtree
+            postorder_traverse(node.right, result)
+            # Visit the root (current node)
+            result.append(node.data)
+        
+        # List to store the result
+        result = []
+        postorder_traverse(root, result)
+        return result

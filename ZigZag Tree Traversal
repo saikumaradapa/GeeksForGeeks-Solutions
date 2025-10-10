@@ -1,0 +1,29 @@
+class Solution:
+    def zigZagTraversal(self, root):
+        if not root:
+            return []
+        
+        result = []
+        queue = [root]
+        left_to_right = True
+        
+        while queue:
+            level = []
+            next_queue = []
+            
+            for node in queue:
+                level.append(node.data)
+                if node.left:
+                    next_queue.append(node.left)
+                if node.right:
+                    next_queue.append(node.right)
+            
+            # Reverse the level if the direction is right to left
+            if not left_to_right:
+                level.reverse()
+            
+            result.extend(level)
+            queue = next_queue
+            left_to_right = not left_to_right
+        
+        return result

@@ -1,0 +1,15 @@
+class Solution:
+    def nodeSum(self, root, l, r):
+        def dfs(node):
+            if not node:
+                return 0
+            # If node's data is less than l, only right subtree may have nodes in range
+            if node.data < l:
+                return dfs(node.right)
+            # If node's data is greater than r, only left subtree may have nodes in range
+            if node.data > r:
+                return dfs(node.left)
+            # If node's data is within the range, include it and check both subtrees
+            return node.data + dfs(node.left) + dfs(node.right)
+        
+        return dfs(root)

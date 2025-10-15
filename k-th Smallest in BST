@@ -1,7 +1,46 @@
-
+# Iterative Approach
 
 class Solution:
     def kthSmallest(self, root, k):
+        """
+        Find the k-th smallest element in a BST (iterative method).
+        Returns -1 if there is no k-th smallest element.
+
+        Time Complexity: O(n)
+        Space Complexity: O(n)
+        """
+        stack = []
+        current = root
+        count = 0
+        
+        while stack or current:
+            # Traverse as left as possible
+            while current:
+                stack.append(current)
+                current = current.left
+            
+            current = stack.pop()
+            count += 1
+            if count == k:
+                return current.data
+            current = current.right
+        
+        # k is larger than the number of nodes
+        return -1
+
+##################################################################################################################################################################################
+
+
+# Recursive Approach
+class Solution:
+    def kthSmallest(self, root, k):
+        """
+        Find the k-th smallest element in a BST (recursive method).
+        Returns -1 if there is no k-th smallest element.
+
+        Time Complexity: O(n)
+        Space Complexity: O(n) [due to recursion stack]
+        """
         self.count = 0
         self.result = -1
 

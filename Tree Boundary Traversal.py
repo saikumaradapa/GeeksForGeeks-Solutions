@@ -1,5 +1,3 @@
-
-
 class Solution:
     def boundaryTraversal(self, root):
         def dfs(nums, root, i):
@@ -35,3 +33,10 @@ class Solution:
         dfs(right, root.right, 2)
         ans += left + leaves + right[::-1]
         return ans
+
+
+''' 
+    time complexity : O(n)
+    space complexity : O(h) - for recursion stack
+'''
+

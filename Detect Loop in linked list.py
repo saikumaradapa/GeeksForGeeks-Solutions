@@ -9,3 +9,8 @@ class Solution:
             if slow == fast:
                 return True 
         return False 
+
+''' 
+    time complexity : O(n)
+    space complexity : O(1)
+'''

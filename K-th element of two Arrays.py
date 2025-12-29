@@ -1,5 +1,3 @@
-
-
 class Solution:
     def kthElement(self, a, b, k):
         if len(a) > len(b):
@@ -24,4 +22,35 @@ class Solution:
                 high = cutA - 1
             else:
                 low = cutA + 1
+
+
+##########################################################
+
+class Solution:
+    def kthElement(self, a, b, k):
+        curr = 0
+        id1, id2 = 0, 0
+        n, m = len(a), len(b)
+
+        for _ in range(k):
+            if id1 < n and id2 < m and a[id1] <= b[id2]:
+                curr = a[id1]
+                id1 += 1
+            elif id1 >= n:
+                curr = b[id2]
+                id2 += 1
+            elif id2 >= m:
+                curr = a[id1]
+                id1 += 1
+            else:
+                curr = b[id2]
+                id2 += 1
+
+        return curr
+
+''' 
+    time complexity : O(k) | worst case O(n + m)
+    space complexity : O(1)
+'''
+
 

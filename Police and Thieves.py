@@ -1,5 +1,3 @@
-
-
 class Solution:
     def catchThieves(self, arr, k):
         police = []

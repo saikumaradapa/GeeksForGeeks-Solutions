@@ -1,3 +1,36 @@
+class Solution:
+    def minMaxDist(self, stations, k):
+        n = len(stations)
+        if n <= 1:
+            return 0.0
+
+        # max initial gap
+        high = max(stations[i+1] - stations[i] for i in range(n-1))
+        low = 0.0
+
+        while high - low > 1e-6:
+            mid = (low + high) / 2
+            print(mid)
+            if self.can_achieve(stations, k, mid):
+                high = mid
+            else:
+                low = mid
+
+        return round(high, 6)
+
+    def can_achieve(self, stations, k, d):
+        needed = 0
+        for i in range(len(stations) - 1):
+            gap = stations[i+1] - stations[i]
+            needed += int(gap / d)
+            # if too many already, stop early
+            if needed > k:
+                return False
+        return needed <= k
+
+#######################################################################################################################################################################################################
+
+
 from heapq import heappush, heappop
 
 class Solution:

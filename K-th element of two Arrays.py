@@ -1,27 +1,35 @@
 class Solution:
     def kthElement(self, a, b, k):
-        if len(a) > len(b):
-            return self.kthElement(b, a, k)  # Ensure a is the smaller array
+        n1, n2 = len(a), len(b)
         
-        n, m = len(a), len(b)
-        low, high = max(0, k - m), min(k, n)
+        if n1 > n2:
+            a, b = b, a
+            n1, n2 = n2, n1
         
-        while low <= high:
-            cutA = (low + high) // 2
-            cutB = k - cutA
+        # l - take ex n1 = 5, n2 = 6 and k = 7 you need atleast (k-n2) = 1 from a to left side 
+        l, r = max(0, k-n2), min(n1, k)
+        
+        while l <= r:
+            mid1 = (l + r) // 2
+            mid2 = k - mid1
             
-            leftA = a[cutA - 1] if cutA > 0 else float('-inf')
-            leftB = b[cutB - 1] if cutB > 0 else float('-inf')
-            rightA = a[cutA] if cutA < n else float('inf')
-            rightB = b[cutB] if cutB < m else float('inf')
+            left1  = a[mid1-1] if mid1 > 0 else float('-inf')
+            right1 = a[mid1]   if mid1 < n1 else float('inf')
+            left2  = b[mid2-1] if mid2 > 0 else float('-inf')
+            right2 = b[mid2]   if mid2 < n2 else float('inf')
             
-            # Check if the partition is correct
-            if leftA <= rightB and leftB <= rightA:
-                return max(leftA, leftB)
-            elif leftA > rightB:
-                high = cutA - 1
+            if left1 <= right2 and left2 <= right1:
+                return max(left1, left2)
+
+            elif left2 > right1:
+                l = mid1 + 1
             else:
-                low = cutA + 1
+                r = mid1 - 1
+
+''' optimal approach | binary search
+    time complexity : O(log(min(n, m)))
+    space complexity : O(1)
+'''
 
 
 ##########################################################
@@ -48,7 +56,7 @@ class Solution:
 
         return curr
 
-''' 
+''' two pointers approach 
     time complexity : O(k) | worst case O(n + m)
     space complexity : O(1)
 '''

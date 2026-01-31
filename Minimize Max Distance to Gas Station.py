@@ -28,6 +28,11 @@ class Solution:
                 return False
         return needed <= k
 
+''' binary search on answers  
+    time complexity : O(nlog(range/precision​)) ≈ O(n)
+    space complexity : O(1)
+'''
+
 #######################################################################################################################################################################################################
 
 

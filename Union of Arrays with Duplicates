@@ -42,7 +42,7 @@ class Solution:
         return count 
 
 
-''' time complexity : O(n + m)        
+''' time complexity : O(nlogn + mlogm)        
     space complexity : O(1)
 '''
 

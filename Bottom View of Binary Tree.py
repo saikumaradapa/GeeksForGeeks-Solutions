@@ -20,6 +20,7 @@ class Solution:
             res.append(cols[i])
         return res
 
+
 ''' 
     time complexity : O(n)
     space complexity : O(n)

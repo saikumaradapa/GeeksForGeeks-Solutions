@@ -17,6 +17,7 @@ class Solution:
         return result
 
 
+    
 
     def canPlaceCows(self, stalls, k, min_dist):
         count = 1  # Place the first cow in the first stall

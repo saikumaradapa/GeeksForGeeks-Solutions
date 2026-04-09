@@ -2,29 +2,32 @@ Problem Link : https://www.geeksforgeeks.org/problems/intersection-of-two-sorted
 
 
 class Solution:
-    #Function to return a list containing the intersection of two arrays.
-    def intersection(self, arr1, arr2):
-        result = []
-        
+    def intersection(self, a, b):
         i, j = 0, 0
-        n, m = len(arr1), len(arr2)
-        
+        n, m = len(a), len(b)
+        res = []
+
         while i < n and j < m:
-            if arr1[i] < arr2[j]:
+            if a[i] < b[j]:
                 i += 1
-            elif arr1[i] > arr2[j]:
+            elif a[i] > b[j]:
                 j += 1
             else:
-                if not result or result[-1] != arr1[i]:
-                    result.append(arr1[i])
-                i += 1
-                j += 1
-        return result
-        
-''' time complexity : O(n + m)
-    space complexity : O(1)
-'''    
+                res.append(a[i])
+                
+                # Skip duplicates in both arrays
+                val = a[i]
+                while i < n and a[i] == val:
+                    i += 1
+                while j < m and b[j] == val:
+                    j += 1
 
+        return res
+        
+''' two pointers 
+    time complexity : O(n + m)
+    space complexity : O(1) # ignoring output 
+'''
 
 ##################################################################################################################################################################################################################
 

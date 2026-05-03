@@ -1,3 +1,4 @@
+from collections import defaultdict
 class Solution:
     def sortBySetBitCount(self, arr):
         def get_bit_cnt(n):
@@ -15,6 +16,7 @@ class Solution:
             for n in bucket[i]:
                 arr[idx] = n
                 idx += 1
+        return arr
 
 '''
     bucket sort by set bit count
@@ -29,6 +31,7 @@ class Solution:
 class Solution:
     def sortBySetBitCount(self, arr):
         arr.sort(key=lambda x: -bin(x).count('1'))
+        return arr
 
 '''
     sort descending by set bit count
@@ -37,4 +40,5 @@ class Solution:
     time complexity : O(n log n)
     space complexity : O(1)
 '''
+
 

@@ -23,11 +23,23 @@ class Solution:
 
         return best
 
-'''
+''' Optimal Solution with sorting and greedy
     sort by a[i]-b[i] descending
     start with all tasks on B (base sum)
     switching top k tasks to A adds sum of top k (a[i]-b[i]) values
-    find optimal k in valid range [max(0,n-y), min(x,n)]
+    find optimal k in valid range [max(0, n-y), min(x, n)]
+    
+    example: x=3, y=3, a=[1,2,3,4,5], b=[5,4,3,2,1]
+      diff (a[i]-b[i]): [-4,-2,0,2,4] → sorted desc: [4,2,0,-2,-4]
+      base = sum(b) = 15
+      gains (sorted): [+4, +2, 0, -2, -4]
+      prefix: [0, 4, 6, 6, 4, 0]
+      valid k range: lo=max(0,5-3)=2, hi=min(3,5)=3
+      k=2: 15 + 6 = 21, k=3: 15 + 6 = 21 → best = 21 ✓
+    
+    pattern: "assign n items to 2 groups with capacity" → sort by difference
+    similar to LC 1029 Two City Scheduling
+    
     time complexity : O(n log n)
     space complexity : O(n)
 '''

@@ -14,6 +14,7 @@ class Solution:
             return n
         return 0
 
+
 '''
     open_left = count of '(' before position i
     close_right = count of ')' from position i to end

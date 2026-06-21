@@ -12,6 +12,7 @@ class Solution:
         for ch in b:
             b_mod4 = (b_mod4 * 10 + int(ch)) % 4
 
+        
         # if b_mod4 == 0 and b != "0", use 4 (cycle length)
         if b_mod4 == 0:
             b_mod4 = 4

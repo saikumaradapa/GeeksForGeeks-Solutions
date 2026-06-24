@@ -11,6 +11,7 @@ class Solution:
                 r = m - 1
         return ans
 
+
 '''
     sum of 1² + 2² + ... + n² = n(n+1)(2n+1)/6
     binary search for largest n where sum <= p

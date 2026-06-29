@@ -26,4 +26,5 @@ class Solution:
                     ndp[j][1] = (ndp[j][1] + dp[j-1][1]) % MOD  # prev ended with 1, new pair
             dp = ndp
 
+        
         return (dp[k][0] + dp[k][1]) % MOD

@@ -31,7 +31,8 @@ class Solution:
                 return True
         
         return False  # Not all cows can be placed
-        
+
+
 ''' binary search max of min approach 
     time complexity : O(n logm)
     space complexity : O(1)

@@ -22,5 +22,6 @@ class Solution:
         
         if ans == n + 1:
             return 0
+
         
         return n - ans + 1

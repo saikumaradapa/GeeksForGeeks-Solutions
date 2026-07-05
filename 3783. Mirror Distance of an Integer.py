@@ -8,6 +8,7 @@ class Solution:
             temp //= 10
 
         return abs(n - rev)
+        
 
 ''' 
     time complexity : O(10)

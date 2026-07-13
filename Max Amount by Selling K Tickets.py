@@ -32,4 +32,5 @@ class Solution:
                 k = 0
                 break
 
+        
         return res

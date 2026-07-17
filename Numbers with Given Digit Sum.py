@@ -15,4 +15,6 @@ class Solution:
                     if s >= d:
                         dp[i][s] += dp[i - 1][s - d]
 
+
+        
         return dp[n][sum] if dp[n][sum] else -1

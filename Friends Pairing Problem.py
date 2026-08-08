@@ -13,6 +13,7 @@ class Solution:
             prev1 = curr
 
         return prev1
+        
 
 ''' time complexity : O(n)
     space complexity : O(1)

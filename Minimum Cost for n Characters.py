@@ -77,6 +77,7 @@ class Solution:
                     changed = True
 
         return dp[n]
+        
 
 ''' time complexity : O(n log n) amortized (O(log n) relaxation rounds over O(n) states)
     space complexity : O(n)

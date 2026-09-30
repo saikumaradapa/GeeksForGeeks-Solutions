@@ -28,4 +28,5 @@ class Solution:
                     visited[nr][nc] = True
                     q.append((nr, nc, d + 1))
 
+        
         return -1   # target unreachable (only possible on tiny/edge boards)

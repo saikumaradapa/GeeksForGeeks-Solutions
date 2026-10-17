@@ -37,6 +37,7 @@ class Solution:
         return res
         
 
+
     
     def valid(self, n, m, r, c):
         if 0<= r < n and 0<= c < m: return True    

@@ -9,6 +9,7 @@ class Solution:
                 backtrack(start + 1)
                 arr[start], arr[i] = arr[i], arr[start]
 
+
         result = set()
         backtrack(0)
         return sorted(result)
